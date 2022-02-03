@@ -1,0 +1,10 @@
+.header {
+   border-bottom: 1px solid rgba(84, 84, 84, .7);
+   display: grid;
+}
+
+@media (max-width: 900px)  {
+   .header {
+      padding: 0 19px;
+   }
+}

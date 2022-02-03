@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8f890076-c7f5-4e48-811c-05b1c73f8e77" name="Changes" comment="all ready" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="23hQn7Ora0V9TftFFuWIRovRCjR" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/my-app/src" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/my-app/src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/my-app/src/components" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8f890076-c7f5-4e48-811c-05b1c73f8e77" name="Changes" comment="" />
+      <created>1642184003347</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1642184003347</updated>
+      <workItem from="1642184008763" duration="26349000" />
+    </task>
+    <task id="LOCAL-00001" summary="index.html added to App.js">
+      <created>1642185853405</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1642185853405</updated>
+    </task>
+    <task id="LOCAL-00002" summary="styles copied, Header added">
+      <created>1642186666567</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1642186666568</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Footer and Main added">
+      <created>1642186848019</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1642186848019</updated>
+    </task>
+    <task id="LOCAL-00004" summary="popup listeners added">
+      <created>1642188305882</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1642188305882</updated>
+    </task>
+    <task id="LOCAL-00005" summary="popup edit-profile added">
+      <created>1642193141235</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1642193141241</updated>
+    </task>
+    <task id="LOCAL-00006" summary="popup add-card added">
+      <created>1642193474427</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1642193474427</updated>
+    </task>
+    <task id="LOCAL-00007" summary="popup avatar-edit added">
+      <created>1642193749365</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1642193749365</updated>
+    </task>
+    <task id="LOCAL-00008" summary="popup submit-delete added">
+      <created>1642193869741</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1642193869741</updated>
+    </task>
+    <task id="LOCAL-00009" summary="popup image added">
+      <created>1642194072818</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1642194072818</updated>
+    </task>
+    <task id="LOCAL-00010" summary="popup openenig listeners added">
+      <created>1642195813530</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1642195813530</updated>
+    </task>
+    <task id="LOCAL-00011" summary="popup closing listeners added">
+      <created>1642196180672</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1642196180672</updated>
+    </task>
+    <task id="LOCAL-00012" summary="popup closing listeners added">
+      <created>1642198600287</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1642198600287</updated>
+    </task>
+    <task id="LOCAL-00013" summary="api class to utils added">
+      <created>1642198970157</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1642198970157</updated>
+    </task>
+    <task id="LOCAL-00014" summary="cards render added">
+      <created>1642200978845</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1642200978845</updated>
+    </task>
+    <task id="LOCAL-00015" summary="bigPicture added">
+      <created>1642234457185</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1642234457185</updated>
+    </task>
+    <task id="LOCAL-00016" summary="fonts added">
+      <created>1642235434551</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1642235434551</updated>
+    </task>
+    <task id="LOCAL-00017" summary="all ready">
+      <created>1642236492930</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1642236492930</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="index.html added to App.js" />
+    <MESSAGE value="styles copied, Header added" />
+    <MESSAGE value="Footer and Main added" />
+    <MESSAGE value="popup listeners added" />
+    <MESSAGE value="popup edit-profile added" />
+    <MESSAGE value="popup add-card added" />
+    <MESSAGE value="popup avatar-edit added" />
+    <MESSAGE value="popup submit-delete added" />
+    <MESSAGE value="popup image added" />
+    <MESSAGE value="popup openenig listeners added" />
+    <MESSAGE value="popup closing listeners added" />
+    <MESSAGE value="api class to utils added" />
+    <MESSAGE value="cards render added" />
+    <MESSAGE value="bigPicture added" />
+    <MESSAGE value="fonts added" />
+    <MESSAGE value="ready" />
+    <MESSAGE value="all ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="all ready" />
+  </component>
+</project>
