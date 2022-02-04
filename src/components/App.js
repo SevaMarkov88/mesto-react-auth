@@ -1,4 +1,5 @@
 import React from "react";
+import { Route, Routes, Redirect } from 'react-router-dom';
 
 import Header from './Header'
 import Main from "./Main";
@@ -11,6 +12,7 @@ import AddPlacePopup from "./AddPlacePopup";
 
 import {api} from "../utils/api"
 import {CurrentUserContext} from '../contexts/CurrentUserContext';
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
@@ -22,6 +24,8 @@ function App() {
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
+
+  const [loggedIn, setLoggedin] = React.useState();
 
   React.useEffect(() => {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
@@ -115,15 +119,31 @@ function App() {
       <div className="page">
         <div className="page__container">
           <Header/>
-          <Main
-            cards={cards}
-            onEditProfile={handleEditProfileClick}
-            onEditAvatar={handleEditAvatarClick}
-            onAddPlace={handleAddPlaceClick}
-            onCardClick={handleCardClick}
-            onCardLike={handleCardLike}
-            onCardDelete={handleSubmitDeleteClick}
-          />
+          <Routes>
+            <Route path="/sing-up">
+              <Register
+                onRegistration={handleRegistration}
+              />
+            </Route>
+            <Route path="/sing-in">
+              <Login
+                onAuthorization={handleAuthorization}
+                onCheckToken={handleCheckToken}
+              />
+            <ProtectedRoute
+              path="/"
+              component={Main}
+              loggedIn={loggedIn}
+              cards={cards}
+              onEditProfile={handleEditProfileClick}
+              onEditAvatar={handleEditAvatarClick}
+              onAddPlace={handleAddPlaceClick}
+              onCardClick={handleCardClick}
+              onCardLike={handleCardLike}
+              onCardDelete={handleSubmitDeleteClick}
+            />  
+            </Route>
+          </Routes>
           <Footer/>
         </div>
 
