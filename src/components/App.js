@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect, BrowserRouter } from 'react-router-dom';
 
 import Header from './Header'
 import Main from "./Main";
@@ -130,21 +130,19 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className="page">
-        <div className="page__container">
-          <Header />
+      <BrowserRouter>
+        <div className="page">
+          <div className="page__container">
+            <Header />
             <Switch>
-              <Route path="/sing-up">
-                <Register onRegistration={handleRegistration} />
+              <Route path="/sign-up">
+                <Register />
               </Route>
-              <Route path="/sing-in">
-                <Login
-                  onAuthorization={handleLogin}
-                  onCheckToken={handleCheckToken}
-                />
+              <Route path="/sign-in">
+                <Login />
               </Route>
               <ProtectedRoute
-                path="/"
+                path="/main"
                 component={Main}
                 loggedIn={loggedIn}
                 cards={cards}
@@ -155,37 +153,46 @@ function App() {
                 onCardLike={handleCardLike}
                 onCardDelete={handleSubmitDeleteClick}
               />
+              <Route exact path="/">
+                {loggedIn ? (
+                  <Redirect to="/main" />
+                ) : (
+                  <Redirect to="/sign-in" />
+                )}
+              </Route>
             </Switch>
-          <Footer />
-        </div>
 
-        <PopupEditProfile
-          isOpen={isEditProfilePopupOpen}
-          onClose={closeAllPopups}
-          onUpdateUser={handleUpdateUser}
-        />
-        <PopupAvatarEdit
-          isOpen={isEditAvatarPopupOpen}
-          onClose={closeAllPopups}
-          onUpdateAvatar={handleUpdateAvatar}
-        />
-        <PopupSubmitDelete
-          isOpen={isSubmitDeletePopupOpen}
-          card={selectedCard}
-          onClose={closeAllPopups}
-          onSubmitDelete={handleCardDelete}
-        />
-        <ImagePopup
-          isOpen={isImagePopupOpen}
-          card={selectedCard}
-          onClose={closeAllPopups}
-        />
-        <AddPlacePopup
-          isOpen={isAddPlacePopupOpen}
-          onClose={closeAllPopups}
-          onAddPlace={handleAddPlaceSubmit}
-        />
-      </div>
+            <Footer />
+          </div>
+
+          <PopupEditProfile
+            isOpen={isEditProfilePopupOpen}
+            onClose={closeAllPopups}
+            onUpdateUser={handleUpdateUser}
+          />
+          <PopupAvatarEdit
+            isOpen={isEditAvatarPopupOpen}
+            onClose={closeAllPopups}
+            onUpdateAvatar={handleUpdateAvatar}
+          />
+          <PopupSubmitDelete
+            isOpen={isSubmitDeletePopupOpen}
+            card={selectedCard}
+            onClose={closeAllPopups}
+            onSubmitDelete={handleCardDelete}
+          />
+          <ImagePopup
+            isOpen={isImagePopupOpen}
+            card={selectedCard}
+            onClose={closeAllPopups}
+          />
+          <AddPlacePopup
+            isOpen={isAddPlacePopupOpen}
+            onClose={closeAllPopups}
+            onAddPlace={handleAddPlaceSubmit}
+          />
+        </div>
+      </BrowserRouter>
     </CurrentUserContext.Provider>
   );
 }

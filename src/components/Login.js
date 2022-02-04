@@ -25,7 +25,6 @@ function Login(props) {
   }
 
   return (
-    <div className="popup">
       <div className="popup__main-container">
         <form className="popup__form" onSubmit={handleSubmit}>
           <input
@@ -60,7 +59,6 @@ function Login(props) {
           </button>
         </form>
       </div>
-    </div>
   );
 }
 
