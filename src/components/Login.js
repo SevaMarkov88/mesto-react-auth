@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
+import {auth} from '../utils/auth';
 import PopupWithForm from "./PopupWithForm";
 
 function Login(props) {
@@ -19,26 +20,26 @@ function Login(props) {
     setPassword(e.target.value);
   }
 
-  function handleSubmit() {
+  function handleSubmit(e) {
       e.preventDefault();
       if (!userName || !password) {
           return;
       }
-    auth
-        .authorize(userName, password)
+      auth.authorize(userName, password)
         .then((data) => {
-        if (data.jwt) {
-            setState({ username: "", password: "" }, () => {
-            this.props.handleLogin();
-            });
-        }
+            if (data.jwt) {
+            setUserName(userName);
+            setPassword(password);
+            props.handleLogin();
+            props.history.push('/')
+            }
         })
         .catch((err) => console.log(err));
-}
+  }
 
   return (
     <PopupWithForm
-      name="edit-profile"
+      name="login"
       title="Редактировать профиль"
       btn="Сохранить"
       formName="edit"
@@ -46,7 +47,6 @@ function Login(props) {
       onClose={props.onClose}
       onSubmit={handleSubmit}
     >
-      >
       <input
         type="text"
         id="input-name"
@@ -61,7 +61,6 @@ function Login(props) {
         value={userName || ""}
         onChange={handleUserNameChange}
       />
-      <span className="input-name-error popup__span-error" />
       <input
         type="text"
         id="input-job"
@@ -75,7 +74,8 @@ function Login(props) {
         value={password || ""}
         onChange={handlePasswordChange}
       />
-      <span className="input-job-error popup__span-error" />
     </PopupWithForm>
   );
 }
+
+export default withRouter(Login);
