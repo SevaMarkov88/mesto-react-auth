@@ -4,4 +4,10 @@
     text-align: right;
     color: #FFFFFF;
     text-decoration: none;
+    transition: all .5s;
+}
+
+.menu__item:hover {
+    opacity: 0.6;
+    cursor: pointer;
 }
