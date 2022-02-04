@@ -131,8 +131,6 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <BrowserRouter>
-        <div className="page">
-          <div className="page__container">
             <Header />
             <Switch>
               <Route path="/sign-up">
@@ -163,7 +161,6 @@ function App() {
             </Switch>
 
             <Footer />
-          </div>
 
           <PopupEditProfile
             isOpen={isEditProfilePopupOpen}
@@ -191,7 +188,6 @@ function App() {
             onClose={closeAllPopups}
             onAddPlace={handleAddPlaceSubmit}
           />
-        </div>
       </BrowserRouter>
     </CurrentUserContext.Provider>
   );

@@ -25,13 +25,13 @@ function Login(props) {
   }
 
   return (
-      <div className="popup__main-container">
-        <form className="popup__form" onSubmit={handleSubmit}>
+      <div className="login">
+        <h2 className="login__title">Вход</h2>
+        <form className="login__form" onSubmit={handleSubmit}>
           <input
             type="email"
-            id="input-name"
-            className="popup__text"
-            placeholder="email"
+            className="login__input"
+            placeholder="Email"
             minLength="2"
             maxLength="40"
             required
@@ -43,18 +43,17 @@ function Login(props) {
           />
           <input
             type="password"
-            id="input-job"
-            className="popup__text"
-            placeholder="password"
+            className="login__input"
+            placeholder="Password"
             minLength="2"
             maxLength="200"
             required
             autoComplete="off"
-            name="job"
+            name="password"
             value={password || ""}
             onChange={handlePasswordChange}
           />
-          <button className="popup__button" type="submit" aria-label="Войти">
+          <button className="login__button" type="submit" aria-label="Войти">
             Войти
           </button>
         </form>
