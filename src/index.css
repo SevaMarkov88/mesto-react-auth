@@ -14,6 +14,10 @@
 /* header */
 @import url(blocks/header/header.css);
 
+/* menu */
+@import url(blocks/menu/menu.css);
+@import url(blocks/menu/__item/menu__item.css);
+
 /* main */
 @import url(blocks/main/main.css);
 

@@ -4,14 +4,14 @@ import { NavLink } from 'react-router-dom';
 function NavBar() {
     return (
       <nav className="menu">
-        <NavLink
+        {/* <NavLink
           exact
           className="menu__item"
           activeClassName="menu__item_active"
           to="/sing-in"
         >
           Вход
-        </NavLink>
+        </NavLink> */}
         <NavLink
           className="menu__item"
           activeClassName="menu__item_active"
