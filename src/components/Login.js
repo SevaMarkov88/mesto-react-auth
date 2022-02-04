@@ -1,6 +1,4 @@
 import React from "react";
-import {auth} from '../utils/auth';
-import PopupWithForm from "./PopupWithForm";
 
 function Login(props) {
   const [userName, setUserName] = React.useState("");
@@ -9,7 +7,7 @@ function Login(props) {
   React.useEffect(() => {
     setUserName("");
     setPassword("");
-  }, [props.isOpen]);
+  }, []);
 
   function handleUserNameChange(e) {
     setUserName(e.target.value);
@@ -24,17 +22,7 @@ function Login(props) {
       if (!userName || !password) {
           return;
       }
-      auth.authorize(userName, password)
-        .then((data) => {
-            if (data.jwt) {
-            setUserName(userName);
-            setPassword(password);
-            props.handleLogin();
-            props.history.push('/')
-            }
-        })
-        .catch((err) => console.log(err));
-  }
+    }
 
   return (
     <div className="popup__main-container">
