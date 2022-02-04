@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, Redirect } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import Header from './Header'
 import Main from "./Main";
@@ -9,6 +9,7 @@ import PopupAvatarEdit from "./PopupAvatarEdit";
 import PopupSubmitDelete from "./PopupSubmitDelete";
 import ImagePopup from "./ImagePopup";
 import AddPlacePopup from "./AddPlacePopup";
+import Login from "./Login";
 
 import {api} from "../utils/api"
 import {CurrentUserContext} from '../contexts/CurrentUserContext';
@@ -114,6 +115,18 @@ function App() {
     setSelectedCard(null);
   }
 
+  function handleLogin() {
+    setLoggedin(true);
+  }
+
+  function handleRegistration(){
+
+  }
+
+  function handleCheckToken() {
+
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -127,7 +140,7 @@ function App() {
             </Route>
             <Route path="/sing-in">
               <Login
-                onAuthorization={handleAuthorization}
+                onAuthorization={handleLogin}
                 onCheckToken={handleCheckToken}
               />
             <ProtectedRoute
