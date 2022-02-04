@@ -1,5 +1,4 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
 import {auth} from '../utils/auth';
 import PopupWithForm from "./PopupWithForm";
 
@@ -78,4 +77,4 @@ function Login(props) {
   );
 }
 
-export default withRouter(Login);
+export default Login;

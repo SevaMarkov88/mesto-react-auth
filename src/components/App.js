@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Header from './Header'
 import Main from "./Main";
@@ -132,33 +132,31 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <div className="page__container">
-          <Header/>
-          <Routes>
-            <Route path="/sing-up">
-              <Register
-                onRegistration={handleRegistration}
+          <Header />
+            <Switch>
+              <Route path="/sing-up">
+                <Register onRegistration={handleRegistration} />
+              </Route>
+              <Route path="/sing-in">
+                <Login
+                  onAuthorization={handleLogin}
+                  onCheckToken={handleCheckToken}
+                />
+              </Route>
+              <ProtectedRoute
+                path="/"
+                component={Main}
+                loggedIn={loggedIn}
+                cards={cards}
+                onEditProfile={handleEditProfileClick}
+                onEditAvatar={handleEditAvatarClick}
+                onAddPlace={handleAddPlaceClick}
+                onCardClick={handleCardClick}
+                onCardLike={handleCardLike}
+                onCardDelete={handleSubmitDeleteClick}
               />
-            </Route>
-            <Route path="/sing-in">
-              <Login
-                onAuthorization={handleLogin}
-                onCheckToken={handleCheckToken}
-              />
-            <ProtectedRoute
-              path="/"
-              component={Main}
-              loggedIn={loggedIn}
-              cards={cards}
-              onEditProfile={handleEditProfileClick}
-              onEditAvatar={handleEditAvatarClick}
-              onAddPlace={handleAddPlaceClick}
-              onCardClick={handleCardClick}
-              onCardLike={handleCardLike}
-              onCardDelete={handleSubmitDeleteClick}
-            />  
-            </Route>
-          </Routes>
-          <Footer/>
+            </Switch>
+          <Footer />
         </div>
 
         <PopupEditProfile
@@ -172,10 +170,10 @@ function App() {
           onUpdateAvatar={handleUpdateAvatar}
         />
         <PopupSubmitDelete
-        isOpen={isSubmitDeletePopupOpen}
-        card={selectedCard}
-        onClose={closeAllPopups}
-        onSubmitDelete={handleCardDelete}
+          isOpen={isSubmitDeletePopupOpen}
+          card={selectedCard}
+          onClose={closeAllPopups}
+          onSubmitDelete={handleCardDelete}
         />
         <ImagePopup
           isOpen={isImagePopupOpen}
