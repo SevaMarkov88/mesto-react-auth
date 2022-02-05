@@ -23,6 +23,7 @@ function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
   const [isImagePopupOpen, setImagePopupOpen] = React.useState(false);
   const [isSubmitDeletePopupOpen, setSubmitDeletePopupOpen] = React.useState(false);
+  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = React.useState(false);
 
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [currentUser, setCurrentUser] = React.useState({});
@@ -81,6 +82,10 @@ function App() {
     setSubmitDeletePopupOpen(true);
   }
 
+  function handleInfoTooltipPopupOpen () {
+      setIsInfoTooltipOpen(true);
+  }
+
   function handleUpdateUser(data) {
     api.setUserInfo(data.name, data.about)
       .then((data) => {
@@ -114,6 +119,7 @@ function App() {
     setEditProfilePopupOpen(false);
     setImagePopupOpen(false);
     setSubmitDeletePopupOpen(false);
+    setIsInfoTooltipOpen(false);
     setSelectedCard(null);
   }
 

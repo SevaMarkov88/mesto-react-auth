@@ -1,4 +1,5 @@
 import React from "react";
+import * as auth from '../utils/auth'
 
 function Register(props) {
   const [userName, setUserName] = React.useState("");
@@ -19,9 +20,8 @@ function Register(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!userName || !password) {
-      return;
-    }
+    auth.register(userName, password)
+        .then(r => console.log(r));
   }
 
   return (
