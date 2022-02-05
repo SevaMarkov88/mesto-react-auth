@@ -29,7 +29,7 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
 
-  const [loggedIn, setLoggedin] = React.useState();
+  const [loggedIn, setLoggedin] = React.useState(false);
 
   React.useEffect(() => {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
