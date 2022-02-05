@@ -53,7 +53,10 @@ function Login(props) {
             value={password || ""}
             onChange={handlePasswordChange}
           />
-          <button className="login__button" type="submit" aria-label="Войти">
+          <button
+            className="login__button"
+            type="submit"
+            aria-label="Войти">
             Войти
           </button>
         </form>

@@ -15,6 +15,7 @@ import Register from "./Register";
 import {api} from "../utils/api"
 import {CurrentUserContext} from '../contexts/CurrentUserContext';
 import ProtectedRoute from "./ProtectedRoute";
+import InfoTooltip from "./InfoTooltip";
 
 function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
@@ -188,6 +189,9 @@ function App() {
             onClose={closeAllPopups}
             onAddPlace={handleAddPlaceSubmit}
           />
+        <InfoTooltip
+          isSuccess={false}
+        />
       </BrowserRouter>
     </CurrentUserContext.Provider>
   );

@@ -25,45 +25,41 @@ function Register(props) {
   }
 
   return (
-    <div className="popup">
-      <div className="popup__main-container">
-        <form className="popup__form" onSubmit={handleSubmit}>
-          <input
-            type="email"
-            id="input-name"
-            className="popup__text"
-            placeholder="email"
-            minLength="2"
-            maxLength="40"
-            required
-            autoFocus
-            autoComplete="off"
-            name="name"
-            value={userName || ""}
-            onChange={handleUserNameChange}
-          />
-          <input
-            type="password"
-            id="input-job"
-            className="popup__text"
-            placeholder="password"
-            minLength="2"
-            maxLength="200"
-            required
-            autoComplete="off"
-            name="job"
-            value={password || ""}
-            onChange={handlePasswordChange}
-          />
+    <div className="login">
+      <h2 className="login__title">Регистрация</h2>
+          <form className="login__form" onSubmit={handleSubmit}>
+            <input
+              type="email"
+              className="login__input"
+              placeholder="Email"
+              minLength="2"
+              maxLength="40"
+              required
+              autoFocus
+              autoComplete="off"
+              name="name"
+              value={userName || ""}
+              onChange={handleUserNameChange}
+            />
+            <input
+              type="password"
+              className="login__input"
+              placeholder="Password"
+              minLength="2"
+              maxLength="200"
+              required
+              autoComplete="off"
+              name="password"
+              value={password || ""}
+              onChange={handlePasswordChange}
+            />
           <button
-            className="popup__button"
+            className="login__button"
             type="submit"
-            aria-label="Зарегестрироваться"
-          >
-            Зарегестрироваться
+            aria-label="Зарегистрироваться">
+            Зарегистрироваться
           </button>
         </form>
-      </div>
     </div>
   );
 }
