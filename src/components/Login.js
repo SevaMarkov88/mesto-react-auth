@@ -1,5 +1,6 @@
 import React from "react";
-import * as auth from '../utils/auth'
+import {auth} from '../utils/auth';
+import { withRouter } from 'react-router-dom';
 
 function Login(props) {
   const [userName, setUserName] = React.useState("");
@@ -65,4 +66,4 @@ function Login(props) {
   );
 }
 
-export default Login;
+export default withRouter(Login);

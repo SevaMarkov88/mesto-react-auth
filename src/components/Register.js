@@ -1,5 +1,6 @@
 import React from "react";
-import * as auth from '../utils/auth'
+import {auth} from '../utils/auth'
+import { withRouter } from 'react-router-dom';
 
 function Register(props) {
   const [userName, setUserName] = React.useState("");
@@ -20,8 +21,11 @@ function Register(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    auth.register(userName, password)
-        .then(data => console.log(data));
+    auth.register(password, userName)
+        .then(data => {
+          console.log(data);
+          props.history.push('/sign-in')
+        });
   }
 
   return (
@@ -64,4 +68,4 @@ function Register(props) {
   );
 }
 
-export default Register;
+export default withRouter(Register);

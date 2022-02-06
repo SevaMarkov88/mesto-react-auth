@@ -11,24 +11,24 @@ class Auth {
     return res.json();
   }
 
-  register(data) {
+  register(password, email) {
     return fetch(`${this._url}/signup`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
-        password: data.password,
-        email: data.email
+        password: password,
+        email: email
       })
     }).then(this._handleOriginalResponse)
   }
 
-  authorize(data) {
+  authorize(password, email) {
     return fetch(`${this._url}/signin`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
-        password: data.password,
-        email: data.email
+        password: password,
+        email: email
       })
     }).then(this._handleOriginalResponse);
   }
@@ -47,7 +47,9 @@ class Auth {
 const auth = new Auth({
   baseUrl: 'https://auth.nomoreparties.co',
   headers: {
+    authorization: '78a9a2e8-0028-4357-9dc5-3dfee740ccb0',
     'Content-Type': 'application/json'
   }
 })
 
+export {auth};

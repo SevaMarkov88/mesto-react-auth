@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, Redirect, BrowserRouter } from 'react-router-dom';
+import { Route, Switch, Redirect, BrowserRouter, useHistory } from 'react-router-dom';
 
 import Header from './Header'
 import Main from "./Main";
@@ -13,7 +13,6 @@ import Login from "./Login";
 import Register from "./Register";
 
 import {api} from "../utils/api";
-import * as auth from '../utils/auth';
 import {CurrentUserContext} from '../contexts/CurrentUserContext';
 import ProtectedRoute from "./ProtectedRoute";
 import InfoTooltip from "./InfoTooltip";
@@ -31,7 +30,8 @@ function App() {
   const [cards, setCards] = React.useState([]);
   const [authUserEmail, setAuthUserEmain] = React.useState('');
 
-  const [loggedIn, setLoggedin] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(false);
+  const history = useHistory();
 
   React.useEffect(() => {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
@@ -126,7 +126,7 @@ function App() {
   }
 
   function handleLogin() {
-    setLoggedin(true);
+    setLoggedIn(true);
   }
 
   function handleRegistration(){
@@ -134,13 +134,6 @@ function App() {
   }
 
   function handleCheckToken() {
-        const token = localStorage.getItem('jwt');
-        auth.checkToken(token)
-            .then((data) => {
-                console.log(data)
-                setLoggedin(true);
-                setAuthUserEmain(data.email);
-            })
 
   }
 
@@ -150,11 +143,14 @@ function App() {
             <Header />
             <Switch>
               <Route path="/sign-up">
-                <Register />
+                <Register
+                    history={history}
+                />
               </Route>
               <Route path="/sign-in">
                 <Login
                     handleCheckToken={handleCheckToken}
+                    history={history}
                 />
               </Route>
               <ProtectedRoute
@@ -208,6 +204,8 @@ function App() {
           />
         <InfoTooltip
           isSuccess={false}
+          isOpen={handleInfoTooltipPopupOpen}
+          onClose={closeAllPopups}
         />
       </BrowserRouter>
     </CurrentUserContext.Provider>
