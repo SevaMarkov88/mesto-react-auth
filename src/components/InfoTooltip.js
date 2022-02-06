@@ -5,7 +5,7 @@ import notSuccessSignUpImg from "../images/not-sucess-sign-up.svg";
 
 function InfoTooltip(props) {
   return (
-    <div className="popup ${props.isOpen}">
+    <div className={`popup ${props.isOpen  && "popup_opened"}`}>
       <div className="popup__main-container">
         <button
           className="popup__close"

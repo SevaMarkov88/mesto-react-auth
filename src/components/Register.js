@@ -24,6 +24,7 @@ function Register(props) {
     auth.register(password, userName)
         .then(data => {
           console.log(data);
+          props.handleRegister();
           props.history.push('/sign-in')
         });
   }

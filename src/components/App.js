@@ -127,7 +127,11 @@ function App() {
 
   function handleLogin(email) {
     setLoggedIn(true);
-    setAuthUserEmain(email)
+    setAuthUserEmain(email);
+  }
+
+  function handleRegister() {
+      setIsInfoTooltipOpen(true);
   }
 
   function handleLogout() {
@@ -155,6 +159,7 @@ function App() {
               <Route path="/sign-up">
                 <Register
                     history={history}
+                    handleRegister={handleRegister}
                 />
               </Route>
               <Route path="/sign-in">
@@ -215,8 +220,8 @@ function App() {
             onAddPlace={handleAddPlaceSubmit}
           />
         <InfoTooltip
-          isSuccess={false}
-          isOpen={handleInfoTooltipPopupOpen}
+          isSuccess={loggedIn}
+          isOpen={isInfoTooltipOpen}
           onClose={closeAllPopups}
         />
       </BrowserRouter>
