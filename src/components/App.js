@@ -149,6 +149,7 @@ function App() {
               </Route>
               <Route path="/sign-in">
                 <Login
+                    loggedIn={setLoggedIn}
                     handleCheckToken={handleCheckToken}
                     history={history}
                 />

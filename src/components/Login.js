@@ -21,9 +21,12 @@ function Login(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    auth.authorize(userName, password)
-        .then(data => console.log(data));
-    props.handleCheckToken();
+    auth.authorize(password, userName)
+        .then(data => {
+          console.log(data);
+          props.loggedIn(true);
+          props.history.push('/main')
+        });
   }
 
   return (

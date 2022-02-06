@@ -47,7 +47,6 @@ class Auth {
 const auth = new Auth({
   baseUrl: 'https://auth.nomoreparties.co',
   headers: {
-    authorization: '78a9a2e8-0028-4357-9dc5-3dfee740ccb0',
     'Content-Type': 'application/json'
   }
 })
