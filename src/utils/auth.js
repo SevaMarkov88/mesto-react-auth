@@ -1,55 +1,53 @@
-export const BASE_URL = "https://auth.nomoreparties.co";
+class Auth {
+  constructor (options) {
+    this._url = options.baseUrl;
+    this._headers = options.headers;
+  }
 
-export const register = (email, password) => {
-  return fetch(`${BASE_URL}/signup`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ 
-        password: password,
-        email: email
-    })
-  })
-    .then((response) => {
-      return response.json();
-    })
-    .then((res) => {
-      return res;
-    })
-    .catch((err) => console.log(err));
-};
+  _handleOriginalResponse(res) {
+    if (!res.ok) {
+      return Promise.reject(`Error: ${res.status}`);
+    }
+    return res.json();
+  }
 
-export const authorize = (email, password) => {
-  return fetch(`${BASE_URL}/signip`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        password: password,
-        email: email
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.user) {
-        localStorage.setItem("jwt", data.jwt);
+  register(data) {
+    return fetch(`${this._url}/signup`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify({
+        password: data.password,
+        email: data.email
+      })
+    }).then(this._handleOriginalResponse)
+  }
 
-        return data;
+  authorize(data) {
+    return fetch(`${this._url}/signin`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify({
+        password: data.password,
+        email: data.email
+      })
+    }).then(this._handleOriginalResponse);
+  }
+
+  checkToken(token) {
+    return fetch(`${this._url}/users/me`, {
+      method: 'GET',
+      headers: {
+        ...this._headers,
+        Authorization: `Bearer ${token}`
       }
-    })
-    .catch((err) => console.log(err));
-};
+    }).then(this._handleOriginalResponse)
+  }
+}
 
-export const checkToken = (token) => {
-  return fetch(`${BASE_URL}/users/me`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`
-    },
-  })
-    .then((res) => res.json())
-    .then((data) => data);
-};
+const auth = new Auth({
+  baseUrl: 'https://auth.nomoreparties.co',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+
