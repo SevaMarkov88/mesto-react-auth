@@ -12,7 +12,8 @@ import AddPlacePopup from "./AddPlacePopup";
 import Login from "./Login";
 import Register from "./Register";
 
-import {api} from "../utils/api"
+import {api} from "../utils/api";
+import * as auth from '../utils/auth';
 import {CurrentUserContext} from '../contexts/CurrentUserContext';
 import ProtectedRoute from "./ProtectedRoute";
 import InfoTooltip from "./InfoTooltip";
@@ -28,6 +29,7 @@ function App() {
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
+  const [authUserEmail, setAuthUserEmain] = React.useState('');
 
   const [loggedIn, setLoggedin] = React.useState(false);
 
@@ -132,6 +134,13 @@ function App() {
   }
 
   function handleCheckToken() {
+        const token = localStorage.getItem('jwt');
+        auth.checkToken(token)
+            .then((data) => {
+                console.log(data)
+                setLoggedin(true);
+                setAuthUserEmain(data.email);
+            })
 
   }
 
@@ -144,7 +153,9 @@ function App() {
                 <Register />
               </Route>
               <Route path="/sign-in">
-                <Login />
+                <Login
+                    handleCheckToken={handleCheckToken}
+                />
               </Route>
               <ProtectedRoute
                 path="/main"

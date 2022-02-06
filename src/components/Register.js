@@ -21,7 +21,7 @@ function Register(props) {
   function handleSubmit(e) {
     e.preventDefault();
     auth.register(userName, password)
-        .then(r => console.log(r));
+        .then(data => console.log(data));
   }
 
   return (

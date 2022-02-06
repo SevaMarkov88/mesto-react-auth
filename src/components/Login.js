@@ -21,7 +21,8 @@ function Login(props) {
   function handleSubmit(e) {
     e.preventDefault();
     auth.authorize(userName, password)
-        .then(r => console.log(r))
+        .then(data => console.log(data));
+    props.handleCheckToken();
   }
 
   return (
