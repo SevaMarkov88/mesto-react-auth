@@ -24,7 +24,7 @@ function Login(props) {
     auth.authorize(password, userName)
         .then(data => {
           console.log(data);
-          props.loggedIn(true);
+          props.handleLogin(userName);
           props.history.push('/main')
         });
   }

@@ -8,8 +8,8 @@ function Header(props) {
       <img src={logo} alt="Логотип" className="logo header__logo" />
       <NavBar
         loggedIn={props.loggedIn}
-        logOpen={props.logOpen}
-        regOpen={props.regOpen}
+        loggedOut={props.loggedOut}
+        email={props.email}
       />
     </header>
   )

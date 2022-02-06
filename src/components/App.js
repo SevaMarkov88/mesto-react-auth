@@ -125,8 +125,14 @@ function App() {
     setSelectedCard(null);
   }
 
-  function handleLogin() {
+  function handleLogin(email) {
     setLoggedIn(true);
+    setAuthUserEmain(email)
+  }
+
+  function handleLogout() {
+      setLoggedIn(false);
+      setAuthUserEmain('');
   }
 
   function handleRegistration(){
@@ -140,7 +146,11 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <BrowserRouter>
-            <Header />
+            <Header
+                email={authUserEmail}
+                loggedIn={loggedIn}
+                loggedOut={handleLogout}
+            />
             <Switch>
               <Route path="/sign-up">
                 <Register
@@ -150,6 +160,7 @@ function App() {
               <Route path="/sign-in">
                 <Login
                     loggedIn={setLoggedIn}
+                    handleLogin={handleLogin}
                     handleCheckToken={handleCheckToken}
                     history={history}
                 />

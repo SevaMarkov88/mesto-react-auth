@@ -11,3 +11,7 @@
     opacity: 0.6;
     cursor: pointer;
 }
+
+.menu__item:last-of-type {
+    padding-left: 20px;
+}
