@@ -32,9 +32,12 @@ class Auth {
       }),
     })
       .then(this._handleOriginalResponse)
-      .then((res) => res.json())
+      .then((response => response.json()))
       .then((data) => {
-        localStorage.setItem("token", data.token)})
+        console.log(data);
+        localStorage.setItem("token", data.token);
+        localStorage.setItem('email', data.email)
+      })
   }
 
   checkToken(token) {
