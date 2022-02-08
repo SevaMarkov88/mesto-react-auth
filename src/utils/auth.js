@@ -1,5 +1,5 @@
 class Auth {
-  constructor (options) {
+  constructor(options) {
     this._url = options.baseUrl;
     this._headers = options.headers;
   }
@@ -13,42 +13,46 @@ class Auth {
 
   register(password, email) {
     return fetch(`${this._url}/signup`, {
-      method: 'POST',
+      method: "POST",
       headers: this._headers,
       body: JSON.stringify({
         password: password,
-        email: email
-      })
-    }).then(this._handleOriginalResponse)
+        email: email,
+      }),
+    }).then(this._handleOriginalResponse);
   }
 
   authorize(password, email) {
     return fetch(`${this._url}/signin`, {
-      method: 'POST',
+      method: "POST",
       headers: this._headers,
       body: JSON.stringify({
         password: password,
-        email: email
-      })
-    }).then(this._handleOriginalResponse);
+        email: email,
+      }),
+    })
+      .then(this._handleOriginalResponse)
+      .then((res) => res.json())
+      .then((data) => {
+        localStorage.setItem("token", data.token)})
   }
 
   checkToken(token) {
     return fetch(`${this._url}/users/me`, {
-      method: 'GET',
+      method: "GET",
       headers: {
         ...this._headers,
-        Authorization: `Bearer ${token}`
-      }
-    }).then(this._handleOriginalResponse)
+        Authorization: `Bearer ${token}`,
+      },
+    }).then(this._handleOriginalResponse);
   }
 }
 
 const auth = new Auth({
-  baseUrl: 'https://auth.nomoreparties.co',
+  baseUrl: "https://auth.nomoreparties.co",
   headers: {
-    'Content-Type': 'application/json'
-  }
-})
+    "Content-Type": "application/json",
+  },
+});
 
-export {auth};
+export { auth };

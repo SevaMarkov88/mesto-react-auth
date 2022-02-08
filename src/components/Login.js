@@ -34,20 +34,6 @@ function Login(props) {
       });
   }
 
-  function handleTokenCheck() {
-    const token = localStorage.getItem("jwt");
-    auth
-      .checkToken(token)
-      .then((data) => {
-        console.log(data);
-        return true;
-      })
-      .catch((err) => {
-        console.log(err);
-        return false;
-      });
-  }
-
   return (
     <div className="login">
       <h2 className="login__title">Вход</h2>
