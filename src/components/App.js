@@ -84,10 +84,6 @@ function App() {
     setSubmitDeletePopupOpen(true);
   }
 
-  function handleInfoTooltipPopupOpen () {
-      setIsInfoTooltipOpen(true);
-  }
-
   function handleUpdateUser(data) {
     api.setUserInfo(data.name, data.about)
       .then((data) => {
@@ -125,13 +121,20 @@ function App() {
     setSelectedCard(null);
   }
 
-  function handleLogin(email) {
+  function handleLoginSuccess(email) {
     setLoggedIn(true);
     setAuthUserEmain(email);
   }
 
+  function handleLoginNotSuccess() {
+    setLoggedIn(true);
+    setIsInfoTooltipOpen(true);
+    setLoggedIn(false);
+  }
+
   function handleRegister() {
       setIsInfoTooltipOpen(true);
+      setLoggedIn(true);
   }
 
   function handleLogout() {
@@ -139,13 +142,6 @@ function App() {
       setAuthUserEmain('');
   }
 
-  function handleRegistration(){
-
-  }
-
-  function handleCheckToken() {
-
-  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -165,8 +161,8 @@ function App() {
               <Route path="/sign-in">
                 <Login
                     loggedIn={setLoggedIn}
-                    handleLogin={handleLogin}
-                    handleCheckToken={handleCheckToken}
+                    handleLoginSuccess={handleLoginSuccess}
+                    handleLoginNotSuccess={handleLoginNotSuccess}
                     history={history}
                 />
               </Route>

@@ -1,6 +1,6 @@
 import React from "react";
-import {auth} from '../utils/auth';
-import { withRouter } from 'react-router-dom';
+import { auth } from "../utils/auth";
+import { withRouter } from "react-router-dom";
 
 function Login(props) {
   const [userName, setUserName] = React.useState("");
@@ -21,51 +21,67 @@ function Login(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    auth.authorize(password, userName)
-        .then(data => {
-          console.log(data);
-          props.handleLogin(userName);
-          props.history.push('/main')
-        });
+    auth
+      .authorize(password, userName)
+      .then((data) => {
+        console.log(data);
+        props.handleLoginSuccess(userName);
+        props.history.push("/main");
+      })
+      .catch((err) => {
+        console.log(err);
+        props.handleLoginNotSuccess();
+      });
+  }
+
+  function handleTokenCheck() {
+    const token = localStorage.getItem("jwt");
+    auth
+      .checkToken(token)
+      .then((data) => {
+        console.log(data);
+        return true;
+      })
+      .catch((err) => {
+        console.log(err);
+        return false;
+      });
   }
 
   return (
-      <div className="login">
-        <h2 className="login__title">Вход</h2>
-        <form className="login__form" onSubmit={handleSubmit}>
-          <input
-            type="email"
-            className="login__input"
-            placeholder="Email"
-            minLength="2"
-            maxLength="40"
-            required
-            autoFocus
-            autoComplete="off"
-            name="name"
-            value={userName || ""}
-            onChange={handleUserNameChange}
-          />
-          <input
-            type="password"
-            className="login__input"
-            placeholder="Password"
-            minLength="2"
-            maxLength="200"
-            required
-            autoComplete="off"
-            name="password"
-            value={password || ""}
-            onChange={handlePasswordChange}
-          />
-          <button
-            className="login__button"
-            type="submit"
-            aria-label="Войти">
-            Войти
-          </button>
-        </form>
-      </div>
+    <div className="login">
+      <h2 className="login__title">Вход</h2>
+      <form className="login__form" onSubmit={handleSubmit}>
+        <input
+          type="email"
+          className="login__input"
+          placeholder="Email"
+          minLength="2"
+          maxLength="40"
+          required
+          autoFocus
+          autoComplete="off"
+          name="name"
+          value={userName || ""}
+          onChange={handleUserNameChange}
+        />
+        <input
+          type="password"
+          className="login__input"
+          placeholder="Password"
+          minLength="2"
+          maxLength="200"
+          required
+          autoComplete="off"
+          name="password"
+          value={password || ""}
+          onChange={handlePasswordChange}
+        />
+        <button className="login__button" type="submit" aria-label="Войти">
+          Войти
+        </button>
+      </form>
+    </div>
   );
 }
 
