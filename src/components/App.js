@@ -52,8 +52,19 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    handleTokenCheck();
-  }, []);
+    if (localStorage.getItem("token")) {
+      const token = localStorage.getItem("token");
+      auth
+        .checkToken(token)
+        .then((data) => {
+          console.log(data);
+          const email = localStorage.getItem("email");
+          handleLoginSuccess(email);
+          history.push("/main");
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [history]);
 
   function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
@@ -159,20 +170,6 @@ function App() {
   function handleLogout() {
     setLoggedIn(false);
     setAuthUserEmain("");
-  }
-
-  function handleTokenCheck() {
-    if (localStorage.getItem('token')) {
-    const token = localStorage.getItem("token");
-    auth.checkToken(token)
-      .then((data) => {
-        console.log(data);
-        const email = localStorage.getItem('email');
-        handleLoginSuccess(email);
-        history.push('/main')
-      })
-      .catch((err) => console.log(err));
-    }
   }
 
   return (

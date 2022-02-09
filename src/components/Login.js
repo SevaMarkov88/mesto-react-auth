@@ -25,6 +25,8 @@ function Login(props) {
       .authorize(password, userName)
       .then((data) => {
         console.log(data);
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('email', userName);
         props.handleLoginSuccess(userName);
         props.history.push("/main");
       })
