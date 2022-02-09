@@ -28,7 +28,7 @@ function Login(props) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('email', userName);
         props.handleLoginSuccess(userName);
-        props.history.push("/main");
+        props.history.push("/");
       })
       .catch((err) => {
         console.log(err);

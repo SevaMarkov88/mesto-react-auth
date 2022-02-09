@@ -192,7 +192,8 @@ function App() {
             />
           </Route>
           <ProtectedRoute
-            path="/main"
+            exact
+            path="/"
             component={Main}
             loggedIn={loggedIn}
             cards={cards}
@@ -203,12 +204,6 @@ function App() {
             onCardLike={handleCardLike}
             onCardDelete={handleSubmitDeleteClick}
           />
-          <Route exact path="/mesto-react">
-            {loggedIn ? <Redirect to="/main" /> : <Redirect to="/sign-in" />}
-          </Route>
-          <Route exact path="/">
-            {loggedIn ? <Redirect to="/main" /> : <Redirect to="/sign-in" />}
-          </Route>
         </Switch>
 
         <Footer />
