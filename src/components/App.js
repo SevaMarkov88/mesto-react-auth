@@ -172,7 +172,6 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <BrowserRouter>
         <Header
           email={authUserEmail}
           loggedIn={loggedIn}
@@ -238,7 +237,6 @@ function App() {
           isOpen={isInfoTooltipOpen}
           onClose={closeAllPopups}
         />
-      </BrowserRouter>
     </CurrentUserContext.Provider>
   );
 }
