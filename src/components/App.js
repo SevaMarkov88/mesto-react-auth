@@ -2,7 +2,6 @@ import React from "react";
 import {
   Route,
   Switch,
-  Redirect,
   BrowserRouter,
   useHistory,
 } from "react-router-dom";
