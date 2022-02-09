@@ -165,7 +165,7 @@ function App() {
         .then((data) => {
           handleLoginSuccess(data.data.email);
           console.log(loggedIn, data);
-          history.push("/main");
+          history.push("/");
         })
         .catch((err) => console.log(err));
     }
