@@ -51,21 +51,6 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
-  React.useEffect(() => {
-    if (localStorage.getItem("token")) {
-      const token = localStorage.getItem("token");
-      auth
-        .checkToken(token)
-        .then((data) => {
-          console.log(data);
-          const email = localStorage.getItem("email");
-          handleLoginSuccess(email);
-          history.push("/main");
-        })
-        .catch((err) => console.log(err));
-    }
-  }, [history]);
-
   function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
 
@@ -172,6 +157,20 @@ function App() {
     setAuthUserEmain("");
   }
 
+  React.useEffect(() => {
+    if (localStorage.getItem("token")) {
+      const token = localStorage.getItem("token");
+      auth
+        .checkToken(token)
+        .then((data) => {
+          handleLoginSuccess(data.data.email);
+          console.log(loggedIn, data);
+          history.push("/main");
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [history]);
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <BrowserRouter>
@@ -204,6 +203,9 @@ function App() {
             onCardLike={handleCardLike}
             onCardDelete={handleSubmitDeleteClick}
           />
+          <Route exact path="/mesto-react">
+            {loggedIn ? <Redirect to="/main" /> : <Redirect to="/sign-in" />}
+          </Route>
           <Route exact path="/">
             {loggedIn ? <Redirect to="/main" /> : <Redirect to="/sign-in" />}
           </Route>
