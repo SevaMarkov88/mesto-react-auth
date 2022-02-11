@@ -1,4 +1,4 @@
-# Проектная работа: "Mesto (Reactjs App)".
+# Проектная работа: "Mesto (React JS App)".
 
 ## Создана в рамках учебы в [Яндекс.Практикум](https://praktikum.yandex.ru/) на курсе ["Веб-разработчик"](https://praktikum.yandex.ru/web/).
 
