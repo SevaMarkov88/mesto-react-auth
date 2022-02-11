@@ -2,7 +2,6 @@ import React from "react";
 import {
   Route,
   Switch,
-  BrowserRouter,
   useHistory,
 } from "react-router-dom";
 
@@ -135,6 +134,18 @@ function App() {
     setSelectedCard(null);
   }
 
+  React.useEffect(() => {
+    const closeByEscape = (e) => {
+      if (e.key === "Escape") {
+        closeAllPopups();
+      }
+    };
+
+    document.addEventListener("keydown", closeByEscape);
+
+    return () => document.removeEventListener("keydown", closeByEscape);
+  }, []);
+
   function handleLoginSuccess(email) {
     setLoggedIn(true);
     setAuthUserEmain(email);
@@ -168,7 +179,7 @@ function App() {
         })
         .catch((err) => console.log(err));
     }
-  }, [history]);
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
