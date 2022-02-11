@@ -45,7 +45,7 @@
 Клонировать репозиторий:
 
 `
-git clone 
+git clone https://github.com/SevaMarkov88/mesto-react-auth.git
 `
 
 В директории проекта запустить приложение в режиме разработки:
