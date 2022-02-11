@@ -2,7 +2,7 @@
 
 ## Создана в рамках учебы в [Яндекс.Практикум](https://praktikum.yandex.ru/) на курсе ["Веб-разработчик"](https://praktikum.yandex.ru/web/).
 
-*Read this in other languages:* [EN](https://github.com/MelnikovAleksei/mesto-react/blob/master/README.EN.md)
+*Read this in other languages:* [EN](https://github.com/SevaMarkov88/mesto-react-auth/blob/main/README.EN.md)
 
 ## Описание:
 
