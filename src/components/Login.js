@@ -1,5 +1,4 @@
 import React from "react";
-import { auth } from "../utils/auth";
 import { withRouter } from "react-router-dom";
 
 function Login(props) {
@@ -21,19 +20,7 @@ function Login(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    auth
-      .authorize(password, userName)
-      .then((data) => {
-        console.log(data);
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('email', userName);
-        props.handleLoginSuccess(userName);
-        props.history.push("/");
-      })
-      .catch((err) => {
-        console.log(err);
-        props.handleLoginNotSuccess();
-      });
+    props.handleLoginSubmit(password, userName);
   }
 
   return (

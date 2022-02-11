@@ -146,6 +146,22 @@ function App() {
     return () => document.removeEventListener("keydown", closeByEscape);
   }, []);
 
+  function handleLoginSubmit(password, userName) {
+        auth
+          .authorize(password, userName)
+          .then((data) => {
+            console.log(data);
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("email", userName);
+            handleLoginSuccess(userName);
+            history.push("/");
+          })
+          .catch((err) => {
+            console.log(err);
+            handleLoginNotSuccess();
+          });
+  }
+
   function handleLoginSuccess(email) {
     setLoggedIn(true);
     setAuthUserEmain(email);
@@ -190,13 +206,15 @@ function App() {
         />
         <Switch>
           <Route path="/sign-up">
-            <Register history={history} handleRegister={handleRegister} />
+            <Register 
+              history={history}
+              handleRegister={handleRegister} 
+            />
           </Route>
           <Route path="/sign-in">
             <Login
               loggedIn={setLoggedIn}
-              handleLoginSuccess={handleLoginSuccess}
-              handleLoginNotSuccess={handleLoginNotSuccess}
+              handleLoginSubmit={handleLoginSubmit}
               history={history}
             />
           </Route>
