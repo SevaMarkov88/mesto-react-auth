@@ -8,7 +8,7 @@ function PopupWithForm(props) {
           <h3 className="popup__title">{props.title}</h3>
             <form
               className={`popup__form form-${props.formName}`}
-              onSubmit={props.onSubmit} noValidate>
+              onSubmit={props.onSubmit}>
                 {props.children}
                 <button className="popup__button" type="submit" aria-label="Создать карточку">{props.btn}</button>
             </form>

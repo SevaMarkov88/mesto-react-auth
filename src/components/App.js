@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  Route,
-  Switch,
-  useHistory,
-} from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 
 import Header from "./Header";
 import Main from "./Main";
@@ -147,19 +143,19 @@ function App() {
   }, []);
 
   function handleLoginSubmit(password, userName) {
-        auth
-          .authorize(password, userName)
-          .then((data) => {
-            console.log(data);
-            localStorage.setItem("token", data.token);
-            localStorage.setItem("email", userName);
-            handleLoginSuccess(userName);
-            history.push("/");
-          })
-          .catch((err) => {
-            console.log(err);
-            handleLoginNotSuccess();
-          });
+    auth
+      .authorize(password, userName)
+      .then((data) => {
+        console.log(data);
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("email", userName);
+        handleLoginSuccess(userName);
+        history.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        handleLoginNotSuccess();
+      });
   }
 
   function handleLoginSuccess(email) {
@@ -173,9 +169,26 @@ function App() {
     setLoggedIn(false);
   }
 
-  function handleRegister() {
+  function handleRegisterSubmit(password, userName) {
+    auth.register(password, userName).then((data) => {
+      console.log(data);
+      handleRegisterSuccess();
+      history.push("/sign-in");
+    })
+    .catch((err) => {
+      console.log(err);
+      handleRegisterNotSuccess();
+    })
+  }
+
+  function handleRegisterSuccess() {
     setIsInfoTooltipOpen(true);
     setLoggedIn(true);
+  }
+
+  function handleRegisterNotSuccess() {
+    setIsInfoTooltipOpen(true);
+    setLoggedIn(false);
   }
 
   function handleLogout() {
@@ -199,73 +212,73 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-        <Header
-          email={authUserEmail}
-          loggedIn={loggedIn}
-          loggedOut={handleLogout}
-        />
-        <Switch>
-          <Route path="/sign-up">
-            <Register 
-              history={history}
-              handleRegister={handleRegister} 
-            />
-          </Route>
-          <Route path="/sign-in">
-            <Login
-              loggedIn={setLoggedIn}
-              handleLoginSubmit={handleLoginSubmit}
-              history={history}
-            />
-          </Route>
-          <ProtectedRoute
-            exact
-            path="/"
-            component={Main}
-            loggedIn={loggedIn}
-            cards={cards}
-            onEditProfile={handleEditProfileClick}
-            onEditAvatar={handleEditAvatarClick}
-            onAddPlace={handleAddPlaceClick}
-            onCardClick={handleCardClick}
-            onCardLike={handleCardLike}
-            onCardDelete={handleSubmitDeleteClick}
+      <Header
+        email={authUserEmail}
+        loggedIn={loggedIn}
+        loggedOut={handleLogout}
+      />
+      <Switch>
+        <Route path="/sign-up">
+          <Register 
+            history={history} 
+            handleRegisterSubmit={handleRegisterSubmit} 
           />
-        </Switch>
+        </Route>
+        <Route path="/sign-in">
+          <Login
+            loggedIn={setLoggedIn}
+            handleLoginSubmit={handleLoginSubmit}
+            history={history}
+          />
+        </Route>
+        <ProtectedRoute
+          exact
+          path="/"
+          component={Main}
+          loggedIn={loggedIn}
+          cards={cards}
+          onEditProfile={handleEditProfileClick}
+          onEditAvatar={handleEditAvatarClick}
+          onAddPlace={handleAddPlaceClick}
+          onCardClick={handleCardClick}
+          onCardLike={handleCardLike}
+          onCardDelete={handleSubmitDeleteClick}
+        />
+      </Switch>
 
-        <Footer />
+      <Footer />
 
-        <PopupEditProfile
-          isOpen={isEditProfilePopupOpen}
-          onClose={closeAllPopups}
-          onUpdateUser={handleUpdateUser}
-        />
-        <PopupAvatarEdit
-          isOpen={isEditAvatarPopupOpen}
-          onClose={closeAllPopups}
-          onUpdateAvatar={handleUpdateAvatar}
-        />
-        <PopupSubmitDelete
-          isOpen={isSubmitDeletePopupOpen}
-          card={selectedCard}
-          onClose={closeAllPopups}
-          onSubmitDelete={handleCardDelete}
-        />
-        <ImagePopup
-          isOpen={isImagePopupOpen}
-          card={selectedCard}
-          onClose={closeAllPopups}
-        />
-        <AddPlacePopup
-          isOpen={isAddPlacePopupOpen}
-          onClose={closeAllPopups}
-          onAddPlace={handleAddPlaceSubmit}
-        />
-        <InfoTooltip
-          isSuccess={loggedIn}
-          isOpen={isInfoTooltipOpen}
-          onClose={closeAllPopups}
-        />
+      <PopupEditProfile
+        isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}
+        onUpdateUser={handleUpdateUser}
+      />
+      <PopupAvatarEdit
+        isOpen={isEditAvatarPopupOpen}
+        onClose={closeAllPopups}
+        onUpdateAvatar={handleUpdateAvatar}
+      />
+      <PopupSubmitDelete
+        isOpen={isSubmitDeletePopupOpen}
+        card={selectedCard}
+        onClose={closeAllPopups}
+        onSubmitDelete={handleCardDelete}
+      />
+      <ImagePopup
+        isOpen={isImagePopupOpen}
+        card={selectedCard}
+        onClose={closeAllPopups}
+      />
+      <AddPlacePopup
+        isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}
+        onAddPlace={handleAddPlaceSubmit}
+      />
+      <InfoTooltip
+        isSuccess={loggedIn}
+        isOpen={isInfoTooltipOpen}
+        onClose={closeAllPopups}
+      />
     </CurrentUserContext.Provider>
   );
 }

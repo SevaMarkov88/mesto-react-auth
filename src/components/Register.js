@@ -21,12 +21,7 @@ function Register(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    auth.register(password, userName)
-        .then(data => {
-          console.log(data);
-          props.handleRegister();
-          props.history.push('/sign-in')
-        });
+    props.handleRegisterSubmit(password, userName);
   }
 
   return (
